@@ -1,0 +1,19 @@
+<html>
+<head>
+<script>
+const server = "ws://localhost:3000"
+this.ws = new WebSocket(server);
+this.ws.addEventListener('open', () => { console.log('Connected') })
+this.ws.addEventListener('message', (message) => {
+  let msg = JSON.parse(message.data);
+  console.log(msg);
+  document.getElementById("container").innerHTML += `${message.data}\n`;
+});
+</script>
+</head>
+<body>
+  <pre>
+  <div id="container"></div>
+  </pre>
+</body>
+</html>
